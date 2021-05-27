@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLLoginController">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="559.0" prefWidth="409.0">
+            <children>
+                <Label fx:id="userLabel" layoutX="137.0" layoutY="125.0" prefHeight="17.0" prefWidth="67.0" text="Username" visible="true" />
+                <TextField id="userField" fx:id="userInput" layoutX="137.0" layoutY="158.0" onAction="#fillUserInput" prefHeight="25.0" prefWidth="149.0" visible="true" />
+                <Label fx:id="passLabel" layoutX="137.0" layoutY="198.0" text="Password" visible="true" />
+                <TextField fx:id="passInput" layoutX="137.0" layoutY="222.0" onAction="#fillPassInput" visible="true" />
+                <Label fx:id="toRegisterLabel" layoutX="149.0" layoutY="330.0" prefHeight="25.0" prefWidth="124.0" text="Don't have an account?" visible="true" />
+                <Button fx:id="toRegisterBtn" layoutX="159.0" layoutY="355.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="25.0" prefWidth="105.0" text="Register" />
+                <Label fx:id="statusLoginFail" layoutX="162.0" layoutY="300.0" prefHeight="17.0" prefWidth="111.0" text="Incorrect password!" visible="false" />
+                <Button fx:id="logInBtn" layoutX="159.0" layoutY="267.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="105.0" text="Log in" />
+            </children>
+        </Pane>
+    </children>
+</GridPane>

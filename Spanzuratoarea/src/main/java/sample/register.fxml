@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLRegisterController">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="559.0" prefWidth="409.0">
+            <children>
+                <Label fx:id="userLabel" layoutX="134.0" layoutY="112.0" prefHeight="17.0" prefWidth="67.0" text="Username" visible="true" />
+                <TextField id="userField" fx:id="userInput" layoutX="136.0" layoutY="136.0" onAction="#fillUserInput" prefHeight="25.0" prefWidth="149.0" visible="true" />
+                <Label fx:id="passLabel" layoutX="134.0" layoutY="173.0" text="Password" visible="true" />
+                <TextField fx:id="passInput" layoutX="136.0" layoutY="255.0" onAction="#fillPassInput" visible="true" />
+                <Label fx:id="passConfirmLabel" layoutX="136.0" layoutY="230.0" text="Confirm password" visible="true" />
+                <TextField fx:id="passConfirmInput" layoutX="136.0" layoutY="197.0" onAction="#fillPassConfirmInput" visible="true" />
+                <Label fx:id="toLogInLabel" layoutX="106.0" layoutY="363.0" prefHeight="25.0" prefWidth="210.0" text="Registered successfully! Please log in!" visible="false" />
+                <Label fx:id="statusRegisterFail" layoutX="170.0" layoutY="336.0" prefHeight="17.0" prefWidth="83.0" text="Register failed!" visible="false" />
+                <Button fx:id="toLoginBtn" layoutX="159.0" layoutY="406.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="25.0" prefWidth="105.0" text="Log in" />
+                <Button layoutX="158.0" layoutY="301.0" mnemonicParsing="false" onAction="#getRegisterMessage" prefHeight="25.0" prefWidth="105.0" text="Register" />
+            </children>
+        </Pane>
+    </children>
+</GridPane>

@@ -1,0 +1,13 @@
+We entered proxy [13.72.71.159] [80]
+We entered proxy [124.106.224.5] [8080]
+We entered proxy [178.205.169.210] [3128]
+We entered proxy [183.88.226.50] [8080]
+We entered proxy [165.227.173.87] [40107]
+We entered proxy [23.251.138.105] [8080]
+We entered proxy [95.217.34.209] [3128]
+We entered proxy [188.240.71.213] [3128]
+We entered proxy [51.178.220.22] [80]
+We entered proxy [34.122.40.247] [3128]
+
+http://localhost:8081/synonym/entry/query?cuvant=carte&tip=substantiv%20feminin&index=29&recursiv=true
+http://localhost:8081/synonym/entry/all?cuvant=masa&index=30&recursiv=true

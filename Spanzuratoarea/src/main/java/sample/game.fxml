@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLGameController">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="559.0" prefWidth="409.0">
+            <children>
+                <Button fx:id="playBtn" layoutX="159.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="PLAY" />
+            </children>
+        </Pane>
+    </children>
+</GridPane>

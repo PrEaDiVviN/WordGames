@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/src/main/java/external/javafx/lib" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/external/jaunt/jaunt1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/java/external/javafx/lib" recursive="false" />
+  </library>
+</component>
