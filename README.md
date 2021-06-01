@@ -13,8 +13,6 @@
     <li>HikariCP connection Pool</li>
     <li>JavaFx + SceneBuilder</li>
   </ol>
-  <h1>Contributii</h1>
-  <p>Am lucrat impreuna in majoritatea timpului (intalniri pe DISCORD/ZOOM/FIZICE) si nu putem atribui un element unei singure persoane.</p>
   <h1>Elemente deosebite din punct de vedere al programarii</h1>
   <h2>Scrapping</h2>
   <ol>
@@ -76,5 +74,7 @@
     <li>Tables: cuvinte 85158 entries, sinonime, users.</li>
     <li>Exportul bazei de date este in format sql pentru mysql.</li> 
   </ol>  
+  <h1>Contributii</h1>
+  <p>Am lucrat impreuna in majoritatea timpului (intalniri pe DISCORD/ZOOM/FIZICE) si nu putem atribui un element unei singure persoane.</p>
 </body>
 </html>
