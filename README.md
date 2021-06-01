@@ -50,7 +50,7 @@
   <h2>REST API</h2>
   <ol>
     <li><strong>UsersController</strong> - ofera servicii de: logare, inregistrare, obtinerea unui user pe baza unui id, obtinerea scorului pe baza username-ului, modificarea scorului pe username-ului.</li>
-    <li><strong>WordsController</strong> - ofera servicii de: obtinerea definitiei unui cuvant pe baza numelui/id-ului acestuia (de pe DEXONLINE/RODIKTIONARY), obtinerea definitiilor cuvintelor dintr-un anumit interval atat de pe DEXONLINE/ROWIKTIONARY/AMBELE, verificarea existentei unui cuvant</li>
+    <li><strong>WordsController</strong> - ofera servicii de: obtinerea definitiei unui cuvant pe baza numelui/id-ului acestuia (de pe DEXONLINE/RODIKTIONARY), obtinerea definitiilor cuvintelor dintr-un anumit interval atat de pe DEXONLINE/ROWIKTIONARY/AMBELE, verificarea existentei unui cuvant, oferirea tuturor cuvintelor care incep cu un prefix, oferirea tururor cuvintelor care se termina cu un sufix, oferirea tuturor cuvintelor care contin un anumit text</li>
     <li><strong>SynonymController</strong> - ofera servicii de: obtinere a listei de sinonime pentru un anumit cuvant de un anumit tip, obtinerea a n-lea sinonim a unui cuvant (de anumit tip(substantiv, verb, prepozitie, etc)), obtinerea tuturor sinonimelor unui cuvant. </li>
   </ol>
   <h2>Daos</h2>
