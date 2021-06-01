@@ -11,7 +11,7 @@
     <li>Free Marker</li>
     <li>MySql Connector JDBK</li>
     <li>HikariCP connection Pool</li>
-    <li>JavaFx + SceneBuiler</li>
+    <li>JavaFx + SceneBuilder</li>
     <li>JavaDoc</li>
   </ol>
   <h1>Contributii</h1>
