@@ -42,6 +42,7 @@ public class FXMLGameController {
     private Word wordToGuess;
     private Label hintLabel = new Label();
     private Label userScore = new Label();
+    private int index = 0;
 
     public Scene start() throws IOException {
         Parent parent = setGameElements();
@@ -123,7 +124,8 @@ public class FXMLGameController {
         hintBtn.setPrefWidth(200);
         hintBtn.setPrefHeight(40);
         hintBtn.setOnAction(event -> {
-            String synonym = synonymService.getSynonym(wordToGuess.getWord(),0);
+            index ++;
+            String synonym = synonymService.getSynonym(wordToGuess.getWord(),index);
             hintLabel.setText(synonym);
             hintLabel.setVisible(true);
         });

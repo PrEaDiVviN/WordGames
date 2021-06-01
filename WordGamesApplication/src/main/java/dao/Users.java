@@ -1,5 +1,6 @@
 package dao;
 
+import connection.ConnectionPool;
 import connection.ConnectionSingleton;
 import model.User;
 import model.Word;
@@ -17,6 +18,7 @@ public class Users {
     private PreparedStatement updateScoreStmt;
     private PreparedStatement getScoreStmt;
     private Connection connection;
+    private boolean connectionPool = false;
 
     public Users() { //uses Singleton Connection to the database
         connection = ConnectionSingleton.getConnection();
@@ -36,7 +38,56 @@ public class Users {
         }
     }
 
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
+    public void setConnectionHikaryCp() {
+        this.connectionPool = true;
+    }
+
+
+    public void checkEndConnection() {
+        if(this.connectionPool) {
+            try {
+                this.connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
+    public void reInitializeObject() {
+        String insertString = "INSERT INTO user(`id`, `username`,`password`,`score`) VALUES ( ? , ? , ? , 0)";
+        String selectString = "SELECT * FROM user WHERE id = ?";
+        String loginString = "SELECT password FROM user WHERE username=?";
+        String updateScoreString = "UPDATE user SET score=? WHERE username=?";
+        String getScoreString = "SELECT score FROM user WHERE username=?";
+        try {
+            insertStmt = connection.prepareStatement(insertString);
+            selectStmt = connection.prepareStatement(selectString);
+            loginStmt = connection.prepareStatement(loginString);
+            updateScoreStmt = connection.prepareStatement(updateScoreString);
+            getScoreStmt = connection.prepareStatement(getScoreString);
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    public void checkPool() {
+        if(this.connectionPool) {
+            try {
+                Connection con = ConnectionPool.getConnection();
+                setConnection(con);
+                reInitializeObject();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+
     public Integer getScore(String username) {
+        checkPool();
         try {
             getScoreStmt.setString(1,username);
 
@@ -48,10 +99,12 @@ public class Users {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        checkEndConnection();
         return null;
     }
 
     public void updateScore(String username) {
+        checkPool();
         try {
             Integer score = getScore(username);
             updateScoreStmt.setInt(1,score + 1);
@@ -60,9 +113,11 @@ public class Users {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        checkEndConnection();
     }
 
     public User getUserById(Integer id) {
+        checkPool();
         User user = new User();
         try {
             selectStmt.setInt(1,id);
@@ -75,10 +130,12 @@ public class Users {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        checkEndConnection();
         return null;
     }
 
     public boolean login(String username, String password) {
+        checkPool();
         try {
             loginStmt.setString(1,username);
             ResultSet result = loginStmt.executeQuery();
@@ -91,10 +148,12 @@ public class Users {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        checkEndConnection();
         return false;
     }
 
     public boolean register(String username, String password, String confirmPass) {
+        checkPool();
         try {
             if(password.equals(confirmPass)) {
                 insertStmt.setInt(1,(new Random().nextInt()));
@@ -107,6 +166,7 @@ public class Users {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+        checkEndConnection();
         return false;
     }
 }

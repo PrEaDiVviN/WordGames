@@ -82,7 +82,7 @@ public class WordsController {
 
 
     @GetMapping("/getRange/dexonline")
-    public ResponseEntity<List<Word>> getWordsRangeDexOnline (@RequestParam int skip, int count) {
+    public ResponseEntity<List<Word>> getWordsRangeDexOnline (@RequestParam int skip,@RequestParam int count) {
         try {
             return new ResponseEntity<>(wordsDao.getWordTargetDexOnline(skip,count), HttpStatus.OK);
         } catch (InvalidRangeException | NoWordException  e) {
@@ -91,7 +91,7 @@ public class WordsController {
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
     @GetMapping("/getRange/rowiktionary")
-    public ResponseEntity<List<Word>> getWordsRangeRoWiktionary (@RequestParam int skip, int count) {
+    public ResponseEntity<List<Word>> getWordsRangeRoWiktionary (@RequestParam int skip,@RequestParam int count) {
         try {
             return new ResponseEntity<>(wordsDao.getWordTargetRoWiktionary(skip,count), HttpStatus.OK);
         } catch (InvalidRangeException | NoWordException  e) {
@@ -100,7 +100,7 @@ public class WordsController {
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
     @GetMapping("/getRange")
-    public ResponseEntity<List<WordDuoDefinition>> getWordsRange (@RequestParam int skip, int count) {
+    public ResponseEntity<List<WordDuoDefinition>> getWordsRange (@RequestParam int skip,@RequestParam int count) {
         try {
             return new ResponseEntity<>(wordsDao.getWordRange(skip,count), HttpStatus.OK);
         } catch (InvalidRangeException | NoWordException  e) {
@@ -117,5 +117,35 @@ public class WordsController {
             e.printStackTrace();
         }
         return new ResponseEntity<>("Bad request! Please see the documentation before proceeding to do more calls!", HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/startsWith")
+    public ResponseEntity<List<Word>> getWordsStartWith (@RequestParam String prefix) {
+        try {
+            return new ResponseEntity<>(wordsDao.getWordStartWith(prefix), HttpStatus.OK);
+        } catch (NoWordException  e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/endsWith")
+    public ResponseEntity<List<Word>> getWordsEndsWith (@RequestParam String suffix) {
+        try {
+            return new ResponseEntity<>(wordsDao.getWordEndWith(suffix), HttpStatus.OK);
+        } catch (NoWordException  e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/contains")
+    public ResponseEntity<List<Word>> getWordsContains (@RequestParam String text) {
+        try {
+            return new ResponseEntity<>(wordsDao.getWordContains(text), HttpStatus.OK);
+        } catch (NoWordException  e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 }
