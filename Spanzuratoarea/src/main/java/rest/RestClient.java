@@ -13,6 +13,10 @@ public class RestClient {
     private static final String LOGIN_API = "http://localhost:8082/user/login";
     private static final String REGISTER_API = "http://localhost:8082/user/register";
     private static final String GET_WORD_BY_ID = "http://localhost:8082/word/getById/{id}";
+    private static final String GET_SYNONYM = "http://localhost:8082/synonym/entry/all/{cuvant}/{index}/{recursiv}";
+    private static final String GET_WORD_WITH_SYNONYM = "http://localhost:8082/synonym/getWordWithSynonym";
+    private static final String UPDATE_SCORE = "http://localhost:8082/user/score/{username}";
+    private static final String GET_SCORE = "http://localhost:8082/user/getScore/{username}";
 
     public static boolean callLoginApi(String username, String password) {
         Map<String,String> parameter = new HashMap<>();
@@ -40,5 +44,32 @@ public class RestClient {
         parameter.put("id",id);
         Word word = restTemplate.getForObject(GET_WORD_BY_ID, Word.class, parameter);
         return word;
+    }
+
+    public static String callGetSynonymApi(String word, Integer index) {
+        Map<String,Object> parameters = new HashMap<>();
+        parameters.put("cuvant",word);
+        parameters.put("index",index);
+        parameters.put("recursiv",true);
+        ResponseEntity<String> synonym = restTemplate.getForEntity(GET_SYNONYM, String.class, parameters);
+        return synonym.getBody();
+    }
+
+    public static Integer callGetWordWithSynonym() {
+        Integer wordId = restTemplate.getForObject(GET_WORD_WITH_SYNONYM, Integer.class);
+        return wordId;
+    }
+
+    public static void callUpdateScore(String username) {
+        Map<String,String> parameter = new HashMap<>();
+        parameter.put("username",username);
+        restTemplate.put(UPDATE_SCORE,Void.class,parameter);
+    }
+
+    public static Integer callGetScoreApi(String username) {
+        Map<String,String> parameter = new HashMap<>();
+        parameter.put("username",username);
+        Integer score = restTemplate.getForObject(GET_SCORE, Integer.class, parameter);
+        return score;
     }
 }

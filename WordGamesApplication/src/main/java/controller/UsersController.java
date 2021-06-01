@@ -44,4 +44,14 @@ public class UsersController {
             return new ResponseEntity<>(
                     "Unauthorized!", HttpStatus.OK);
     }
+
+    @PutMapping("/score/{username}")
+    public void updateScore(@PathVariable String username) {
+        usersDao.updateScore(username);
+    }
+
+    @GetMapping("/getScore/{username}")
+    public Integer getScore(@PathVariable String username) {
+        return usersDao.getScore(username);
+    }
 }

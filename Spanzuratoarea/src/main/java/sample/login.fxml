@@ -2,8 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLLoginController">
+<GridPane alignment="center" hgap="10" style="-fx-background-color: #76FFF7;" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FXMLLoginController">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -13,14 +14,28 @@
     <children>
         <Pane prefHeight="559.0" prefWidth="409.0">
             <children>
-                <Label fx:id="userLabel" layoutX="137.0" layoutY="125.0" prefHeight="17.0" prefWidth="67.0" text="Username" visible="true" />
-                <TextField id="userField" fx:id="userInput" layoutX="137.0" layoutY="158.0" onAction="#fillUserInput" prefHeight="25.0" prefWidth="149.0" visible="true" />
-                <Label fx:id="passLabel" layoutX="137.0" layoutY="198.0" text="Password" visible="true" />
-                <TextField fx:id="passInput" layoutX="137.0" layoutY="222.0" onAction="#fillPassInput" visible="true" />
-                <Label fx:id="toRegisterLabel" layoutX="149.0" layoutY="330.0" prefHeight="25.0" prefWidth="124.0" text="Don't have an account?" visible="true" />
-                <Button fx:id="toRegisterBtn" layoutX="159.0" layoutY="355.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="25.0" prefWidth="105.0" text="Register" />
+                <Label fx:id="userLabel" layoutX="63.0" layoutY="120.0" prefHeight="17.0" prefWidth="75.0" text="USERNAME" textFill="#524d4d" visible="true">
+                    <font>
+                        <Font name="SansSerif Bold" size="12.0" />
+                    </font></Label>
+                <TextField id="userField" fx:id="userInput" layoutX="62.0" layoutY="137.0" onAction="#fillUserInput" prefHeight="35.0" prefWidth="297.0" visible="true" />
+                <Label fx:id="passLabel" layoutX="62.0" layoutY="198.0" text="PASSWORD" textFill="#524d4d" visible="true">
+                    <font>
+                        <Font name="SansSerif Bold" size="12.0" />
+                    </font></Label>
+                <PasswordField fx:id="passInput" layoutX="62.0" layoutY="215.0" onAction="#fillPassInput" prefHeight="35.0" prefWidth="297.0" visible="true" />
+                <Label fx:id="toRegisterLabel" layoutX="149.0" layoutY="374.0" prefHeight="25.0" prefWidth="124.0" text="Don't have an account?" visible="true" />
+                <Button fx:id="toRegisterBtn" layoutX="151.0" layoutY="404.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #2257b9;" text="REGISTER" textFill="WHITE" />
                 <Label fx:id="statusLoginFail" layoutX="162.0" layoutY="300.0" prefHeight="17.0" prefWidth="111.0" text="Incorrect password!" visible="false" />
-                <Button fx:id="logInBtn" layoutX="159.0" layoutY="267.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="105.0" text="Log in" />
+                <Button fx:id="logInBtn" layoutX="62.0" layoutY="270.0" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="297.0" style="-fx-background-color: #2257b9;" text="LOG IN" textFill="#fcf5f5">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Label layoutX="63.0" layoutY="77.0" text="ACCOUNT LOGIN" textFill="#2257b9">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
     </children>

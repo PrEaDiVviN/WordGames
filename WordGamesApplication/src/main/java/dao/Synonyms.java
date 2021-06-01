@@ -22,6 +22,7 @@ public class Synonyms {
     private PreparedStatement modifySynonymTextByIdWordAndType;
     private PreparedStatement modifySynonymTypeByIdWordAndType;
     private PreparedStatement modifySynonymTextAndTypeByIdWordAndType;
+    private PreparedStatement getWordWithSynonym;
     private Connection connection;
 
     public Synonyms() { //uses Singleton Connection to the database
@@ -36,6 +37,7 @@ public class Synonyms {
         String modifyLineTypeByIdWordAndType = "UPDATE sinonime SET tip_sinonime = ? WHERE id_cuvant = ? AND tip_sinonime = ?";
         String modifyLineTextByIdWordAndType = "UPDATE sinonime SET text_sinonime = ? WHERE id_cuvant = ? AND tip_sinonime = ?";
         String modifyLineTextAndTypeByIdWordAndType = "UPDATE sinonime SET text_sinonime = ?, tip_sinonime = ? WHERE id_cuvant = ? AND tip_sinonime = ?";
+        String getWordId = "SELECT id_cuvant FROM sinonime WHERE id_sinonim = ?";
         try {
             insertStmt = connection.prepareStatement(insertLine);
             getSynonymById = connection.prepareStatement(getLineById);
@@ -47,6 +49,7 @@ public class Synonyms {
             modifySynonymTypeByIdWordAndType = connection.prepareStatement(modifyLineTypeByIdWordAndType);
             modifySynonymTextByIdWordAndType = connection.prepareStatement(modifyLineTextByIdWordAndType);
             modifySynonymTextAndTypeByIdWordAndType = connection.prepareStatement(modifyLineTextAndTypeByIdWordAndType);
+            getWordWithSynonym = connection.prepareStatement(getWordId);
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
@@ -61,6 +64,21 @@ public class Synonyms {
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
+    }
+
+    public Integer getWordWithSynonym(Integer id) {
+        try{
+            getWordWithSynonym.setInt(1,id);
+            ResultSet result = getWordWithSynonym.executeQuery();
+            Integer wordId = null;
+            if(result.next())
+                wordId = result.getInt("id_cuvant");
+            return wordId;
+        }
+        catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     public Synonym getSynonymById(int id) throws  NoSynonymException {

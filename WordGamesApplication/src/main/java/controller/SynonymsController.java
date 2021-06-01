@@ -4,6 +4,7 @@ import dao.Synonyms;
 import dao.Words;
 import exceptions.NoSynonymException;
 import exceptions.NoWordException;
+import io.swagger.models.auth.In;
 import model.Synonym;
 import model.Word;
 import org.springframework.http.HttpStatus;
@@ -43,15 +44,15 @@ public class SynonymsController {
             if(recursiv)
                 return new ResponseEntity<>(separatedCsv[index%separatedCsv.length],HttpStatus.OK);
             return new ResponseEntity<>("Bad Request! Pay attention to the fact that if you do not ret recursiv parameter ON, then, an index bigger then" +
-                                        " the number of entries will result in 403(BAD REQUEST)!",HttpStatus.BAD_REQUEST);
+                    " the number of entries will result in 403(BAD REQUEST)!",HttpStatus.BAD_REQUEST);
         } catch (NoWordException | NoSynonymException e) {
             e.printStackTrace();
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/entry/all")
-    public ResponseEntity<String> getSynonymAllEntry(@RequestParam String cuvant, @RequestParam int index, @RequestParam boolean recursiv){
+    @GetMapping("/entry/all/{cuvant}/{index}/{recursiv}")
+    public ResponseEntity<String> getSynonymAllEntry(@PathVariable String cuvant, @PathVariable int index, @PathVariable boolean recursiv){
         try {
             Word word = wordsDao.getWordByName(cuvant.replaceAll("%20", " "));
             List<Synonym> synonymList = synonymsDao.getSynonymsByWordId(word.getId());
@@ -72,8 +73,8 @@ public class SynonymsController {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Synonym>> getSynonymQuery(@RequestParam String cuvant){
+    @GetMapping("/all/{cuvant}")
+    public ResponseEntity<List<Synonym>> getSynonymQuery(@PathVariable String cuvant){
         try {
             Word word = wordsDao.getWordByName(cuvant.replaceAll("%20", " "));
             List<Synonym> synonymList = synonymsDao.getSynonymsByWordId(word.getId());
@@ -116,6 +117,12 @@ public class SynonymsController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/getWordWithSynonym")
+    public Integer getWordWithSynonym() {
+        Random random = new Random();
+        return synonymsDao.getWordWithSynonym(random.nextInt((65000 - 1) + 1) + 1);
     }
 
 }

@@ -9,7 +9,7 @@ public class WordService {
     private static RestClient restClient = new RestClient();
 
     public Word getWordById() {
-        Integer id = generateRandomWordId();
+        Integer id = restClient.callGetWordWithSynonym();
         return restClient.callGetWordById(id);
     }
 

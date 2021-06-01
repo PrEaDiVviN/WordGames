@@ -9,3 +9,5 @@ We entered proxy [188.240.71.213] [3128]
 We entered proxy [51.178.220.22] [80]
 We entered proxy [34.122.40.247] [3128]
 
+http://localhost:8081/synonym/entry/query?cuvant=carte&tip=substantiv%20feminin&index=29&recursiv=true
+http://localhost:8081/synonym/entry/all?cuvant=masa&index=30&recursiv=true

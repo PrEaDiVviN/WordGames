@@ -36,10 +36,10 @@ public class FXMLRegisterController {
     @FXML
     private void goToLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(new File("C:\\Users\\PrEaD\\Desktop\\REST_spanzuratoarea\\Spanzuratoarea\\src\\main\\java\\sample\\login.fxml").toURI().toURL());
-        Parent home_page_parent =loader.load();
-        Scene home_page_scene = new Scene(home_page_parent);
+        Parent home_page_parent = loader.load();
+        Scene home_page_scene = new Scene(home_page_parent,500,500);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_stage.hide(); //optional
+        app_stage.hide();
         app_stage.setScene(home_page_scene);
         app_stage.show();
     }

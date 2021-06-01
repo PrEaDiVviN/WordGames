@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 import services.LoginService;
 import model.User;
@@ -16,8 +17,10 @@ import model.User;
 import java.io.File;
 import java.io.IOException;
 
+import static javafx.print.PrintColor.COLOR;
+
 public class FXMLLoginController {
-    private User user = new User();
+    private static User user = new User();
     private LoginService loginService = new LoginService();
 
     @FXML
@@ -49,8 +52,6 @@ public class FXMLLoginController {
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.hide();
             app_stage.setScene(home_page_scene);
-            app_stage.setWidth(1000);
-            app_stage.setHeight(600);
             app_stage.show();
             fxmlGameController.startGame();
         }
@@ -65,5 +66,9 @@ public class FXMLLoginController {
     @FXML
     private void fillPassInput() {
         user.setPassword(passInput.getText());
+    }
+
+    public static User getUser() {
+        return user;
     }
 }

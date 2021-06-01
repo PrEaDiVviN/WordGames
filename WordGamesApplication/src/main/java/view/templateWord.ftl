@@ -105,10 +105,10 @@
         </div>
         <script>
             function next() {
-                window.location.replace("http://localhost:8081/view/query?" + "skip=" + (${entry}*10 + 10) + "&count=10");
+                window.location.replace("http://localhost:8082/view/query?" + "skip=" + (${entry}*10 + 10) + "&count=10");
             }
             function prev() {
-                window.location.replace("http://localhost:8081/view/query?" + "skip=" + (${entry}*10 - 10) + "&count=10");
+                window.location.replace("http://localhost:8082/view/query?" + "skip=" + (${entry}*10 - 10) + "&count=10");
             }
         </script>
     </body>

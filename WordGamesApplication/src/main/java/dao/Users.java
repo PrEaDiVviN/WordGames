@@ -14,17 +14,49 @@ public class Users {
     private PreparedStatement insertStmt;
     private PreparedStatement selectStmt; //user by id
     private PreparedStatement loginStmt;
+    private PreparedStatement updateScoreStmt;
+    private PreparedStatement getScoreStmt;
     private Connection connection;
 
     public Users() { //uses Singleton Connection to the database
         connection = ConnectionSingleton.getConnection();
-        String insertString = "INSERT INTO user(`id`, `username`,`password`) VALUES ( ? , ? , ? )";
+        String insertString = "INSERT INTO user(`id`, `username`,`password`,`score`) VALUES ( ? , ? , ? , 0)";
         String selectString = "SELECT * FROM user WHERE id = ?";
         String loginString = "SELECT password FROM user WHERE username=?";
+        String updateScoreString = "UPDATE user SET score=? WHERE username=?";
+        String getScoreString = "SELECT score FROM user WHERE username=?";
         try {
             insertStmt = connection.prepareStatement(insertString);
             selectStmt = connection.prepareStatement(selectString);
             loginStmt = connection.prepareStatement(loginString);
+            updateScoreStmt = connection.prepareStatement(updateScoreString);
+            getScoreStmt = connection.prepareStatement(getScoreString);
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    public Integer getScore(String username) {
+        try {
+            getScoreStmt.setString(1,username);
+
+            ResultSet result = getScoreStmt.executeQuery();
+            if(result.next()){
+                Integer score = result.getInt("score");
+                return score;
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
+    }
+
+    public void updateScore(String username) {
+        try {
+            Integer score = getScore(username);
+            updateScoreStmt.setInt(1,score + 1);
+            updateScoreStmt.setString(2,username);
+            updateScoreStmt.executeUpdate();
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
