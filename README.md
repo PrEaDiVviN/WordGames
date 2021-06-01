@@ -12,7 +12,6 @@
     <li>MySql Connector JDBK</li>
     <li>HikariCP connection Pool</li>
     <li>JavaFx + SceneBuilder</li>
-    <li>JavaDoc</li>
   </ol>
   <h1>Contributii</h1>
   <p>Am lucrat impreuna in majoritatea timpului (intalniri pe DISCORD/ZOOM/FIZICE) si nu putem atribui un element unei singure persoane.</p>
