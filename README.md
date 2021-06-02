@@ -21,7 +21,7 @@
     <li>Synonym scrapping de la <a href="https://sin0nime.com/">referinta sin0nime</a> folosit pentru a obtine sinonimele corespunzatoare fiecarui cuvant al limbii romane. Pe acestea le-am stocat intr-o baza de date. <strong>Timp scrapping: 25ore.</strong></li>
     <li>Definition scrapping de la <a href="https://dexonline.ro/">referinta dexonline</a> folosit pentru a obtine definitiile corespunzatoare fiecarui cuvant al limbii romane. Pe acestea le-am stocat intr-o baza de date. Utilizeaza in spate PROXY-uri pentru mascarea identitatii(problema: aprox 700 request-uri produce un block de la dexonline pe o anumita perioada). Se folosesc REGEX-uri pentru parsarea documentelor html primite.</li>
   </ol>  
-  <h2>Proxy verifier</h2>
+  <h2>Proxy HTTP verifier</h2>
   <ul>
       <li>Primeste o lista de proxy-uri cu anumite porturi si obtine acele proxy-uri ce sunt valabile pe un anumit link. Foloseste in spate JAUNT.</li>  
   </ul>
